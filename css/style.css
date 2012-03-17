@@ -1,0 +1,37 @@
+/* slidemenu.css */
+
+.menu-header,
+.menu-item {
+  height: 56px;
+  /* width: 100%; */
+  width: 300px;
+  color: white;
+}
+
+.menu-header > *,
+.menu-item > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.menupane-menu .menu-header,
+.menupane-menu .menu-item {
+  padding-right: 60px;
+}
+.menupane-menu-secondary .menu-header,
+.menupane-menu-secondary .menu-item {
+  padding-left: 60px;
+}
+
+.menu-header {
+  background-color: black;
+}
+
+.menu-item {
+  background-color: rgb( 32,  32,  32);
+}
+
+.menupane-pane {
+  background-color: rgb(192, 192, 192);
+  box-shadow: 0px 0px 5px 6px rgba( 0, 0, 0, 0.75);
+}
