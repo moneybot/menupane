@@ -38,7 +38,7 @@ enyo.kind({
 	},
 
   //* @protected
-  classes: "onyx",
+  classes: "onyx menu-pane",
   style: "overflow: hidden;",
   position: {  // default to 85% open
     menu: {

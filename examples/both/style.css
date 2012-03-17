@@ -2,16 +2,17 @@
 
 .menu-header,
 .menu-item {
-  height: 56px;
+  height: 40px;
+  width: 284px;
   /* width: 100%; */
-  width: 300px;
+
   color: white;
+  padding: 16px 0 0 16px;
 }
 
 .menu-header > *,
 .menu-item > * {
   display: inline-block;
-  vertical-align: middle;
 }
 
 .menupane-menu .menu-header,
@@ -20,18 +21,18 @@
 }
 .menupane-menu-secondary .menu-header,
 .menupane-menu-secondary .menu-item {
-  padding-left: 60px;
+  padding-left: 76px;
 }
 
 .menu-header {
-  background-color: black;
+  background-color: rgb( 64, 64, 64);
 }
 
 .menu-item {
-  background-color: rgb( 32,  32,  32);
+  background-color: rgb(128,128,128);
 }
 
 .menupane-pane {
   background-color: rgb(192, 192, 192);
-  box-shadow: 0px 0px 5px 6px rgba( 0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 6px rgba( 32, 32, 32, 0.5);
 }
