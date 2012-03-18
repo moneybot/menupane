@@ -11,7 +11,7 @@ enyo.kind({
   },
   components: [
     { kind: "onyx.Grabber", ontap: "doToggleMenu", style: "float: left;" },
-    { name: "header", content: "", ontap: "doHeader", style: "text-align: center;" },
+    { name: "header", content: "", ontap: "doHeader", style: "padding-top: 4px" },
     { kind: "onyx.Grabber", ontap: "doToggleSecondaryMenu", style: "float: right;" }
   ],
 
@@ -23,5 +23,4 @@ enyo.kind({
   headerChanged: function() {
     this.$.header.setContent(this.getHeader());
   }
-
 });

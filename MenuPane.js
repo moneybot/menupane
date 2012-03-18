@@ -1,4 +1,16 @@
-/* MenuPane.js */
+/* MenuPane.js
+ *
+ * Copyright © 2012 Ryan Watkins <ryan@ryanwatkins.net>
+ *
+ * Permission to use, copy, modify, distribute, and sell this software
+ * and its documentation for any purpose is hereby granted without
+ * fee, provided that the above copyright notice appear in all copies
+ * and that both that copyright notice and this permission notice
+ * appear in supporting documentation. No representations are made
+ * about the suitability of this software for any purpose. It is
+ * provided "as is" without express or implied warranty.
+ */
+
 /**
  A Pane/View control that also provides Path/Facebook like menus
  that slide in from the left or right sides
@@ -48,6 +60,7 @@ enyo.kind({
       min: -85, max: 0
     }
   },
+  controlParentName: "pane",
 
 	components: [
     { name: "menu",
@@ -62,11 +75,7 @@ enyo.kind({
     { name: "pane", kind: "onyx.Slideable", classes: "menupane-pane",
       value: 0, min: 0, max: 85, unit: "%", draggable: false,
       style: "width: 100%; height: 100%;",
-      onAnimateFinish: "paneAnimateFinishHandler",
-
-      // catch events to toggle menu, rahter than having to pass out and back in?
-      onToggleMenu: "toggleMenu",
-      onToggleSecondaryMenu: "toggleSecondaryMenu"
+      onAnimateFinish: "paneAnimateFinishHandler"
     }
   ],
 
@@ -79,7 +88,7 @@ enyo.kind({
 	//* @public
 	//* Select a view by name - does not animate
   selectView: function(name) {
-    var views = this.$.pane.getControls();
+    var views = this.getClientControls();
 
     // names must be unique, and must exist
     enyo.forEach(views, function(view) {
@@ -110,22 +119,12 @@ enyo.kind({
 	//* @protected
 	create: function() {
 		this.inherited(arguments);
+
     // TODO: make available via own Kind
-    // this.log(this.$.pane.$.animator);
     this.$.pane.$.animator.setDuration(250);
-  },
 
-  initComponents: function() {
-		this.inherited(arguments);
-
-    this.$.menu.createComponents(this.menu);
-    this.$.secondarymenu.createComponents(this.secondarymenu);
-    this.$.pane.createComponents(this.views);
-
-    var views = this.$.pane.getControls();
+    var views = this.getClientControls();
     enyo.forEach(views, function(view) {
-      // TODO: fix all this
-      view.setOwner(this);
       view.hide();
     }, this);
     if (views && views[0]) {
@@ -133,9 +132,14 @@ enyo.kind({
     }
   },
 
-  menuTapHandler: function(inSender, inEvent) {
-    this.log(inSender, inEvent);
+  initComponents: function() {
+		this.inherited(arguments);
 
+    this.$.menu.createComponents(this.menu, { owner: this });
+    this.$.secondarymenu.createComponents(this.secondarymenu, { owner: this });
+  },
+
+  menuTapHandler: function(inSender, inEvent) {
     if (inSender.name == "secondarymenu") {
       this.$.pane.setMax(this.position.secondarymenu.max);
       this.$.pane.setMin(this.position.secondarymenu.min);
@@ -156,8 +160,6 @@ enyo.kind({
     });
 
     var view = getView(inEvent.originator);
-
-    this.log(view);
 
     if (view) {
       if (this.getView() == view) {

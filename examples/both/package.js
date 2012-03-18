@@ -1,12 +1,12 @@
 /* package.js */
 enyo.depends(
-  // requires onyx
+  // requires onyx lib
 	"$lib/onyx",
 
-  // menu pane kind
+  // require menupane kind
 	"../../",
 
-  // example - both
+  // example code
   "Toolbar.js",
 	"App.js",
 	"style.css"

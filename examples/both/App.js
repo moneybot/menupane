@@ -26,24 +26,55 @@ enyo.kind({
         { content: "E", view: "e", classes: "menu-item" },
         { content: "F", view: "f", classes: "menu-item" }
       ],
-      views: [
-        { name: "a",
-          components: [ { kind: "Toolbar" }, { content: "[View A]", style: "background-color: rgb(192,192,255);" } ]
+      components: [
+        { name: "a", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              header: "A",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { content: "[View A]", classes: "content", style: "background-color: rgb(192,192,255);" } ]
         },
-        { name: "b",
-          components: [ { kind: "Toolbar" }, { content: "[View B]", style: "background-color: rgb(255,192,192);" } ]
+        { name: "b", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { classes: "content", style: "background-color: rgb(255,192,192);",
+              components: [
+                { content: "[View B]" },
+                { content: "More" }
+              ] }
+          ]
         },
-        { name: "c",
-          components: [ { kind: "Toolbar" }, { content: "[View C]", style: "background-color: rgb(192,255,192);" } ]
+        { name: "c", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { content: "[View C]", classes: "content", style: "background-color: rgb(192,255,192);" } ]
         },
-        { name: "d",
-          components: [ { kind: "Toolbar" }, { content: "[View D]", style: "background-color: white" } ]
+        { name: "d", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { content: "[View D]", classes: "content", style: "background-color: white" } ]
         },
-        { name: "e",
-          components: [ { kind: "Toolbar" }, { content: "[View E]", style: "color: white; background-color: black" } ]
+        { name: "e", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { content: "[View E]", classes: "content", style: "color: white; background-color: black" } ]
         },
-        { name: "f",
-          components: [ { kind: "Toolbar" }, { content: "[View F]" } ]
+        { name: "f", classes: "view",
+          components: [
+            { kind: "Toolbar",
+              onToggleMenu: "toolbarToggleMenuHandler",
+              onToggleSecondaryMenu: "toolbarToggleSecondaryMenuHandler" },
+            { content: "[View F]", classes: "content" }
+          ]
         }
       ]
     }
@@ -63,6 +94,15 @@ enyo.kind({
   },
   secondaryMenuClosedHandler: function(inSender, inEvent) {
     this.log();
+  },
+
+  toolbarToggleMenuHandler: function(inSender, inEvent) {
+    this.log();
+    this.$.menupane.toggleMenu();
+  },
+  toolbarToggleSecondaryMenuHandler: function(inSender, inEvent) {
+    this.log();
+    this.$.menupane.toggleSecondaryMenu();
   }
 
 });
