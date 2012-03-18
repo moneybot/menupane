@@ -17,8 +17,8 @@
 
  */
 enyo.kind({
-	name: "MenuPane",
-	published: {
+  name: "MenuPane",
+  published: {
     /** a list menu item controls for the left side menu.
         set 'view' property to the 'name' of the view to display
     */
@@ -35,8 +35,8 @@ enyo.kind({
     //  peek: 52,  - make peek configurable
     //* the currently selected view.  Use setView() and getView() to change w/o menu actions
     view: ""
-	},
-	events: {
+  },
+  events: {
     //* Sent when view changes
     onViewChanged: "",
     //* Sent when left menu opens
@@ -47,7 +47,7 @@ enyo.kind({
     onSecondaryMenuOpened: "",
     //* Sent when right menu closes
     onSecondaryMenuClosed: ""
-	},
+  },
 
   //* @protected
   classes: "onyx menu-pane",
@@ -62,7 +62,7 @@ enyo.kind({
   },
   controlParentName: "pane",
 
-	components: [
+  components: [
     { name: "menu",
       classes: "enyo-fit menupane-menu",
       ontap: "menuTapHandler"
@@ -85,8 +85,8 @@ enyo.kind({
   //   openSecondaryMenu();
   //   closeSecondaryMenu();
 
-	//* @public
-	//* Select a view by name - does not animate
+  //* @public
+  //* Select a view by name - does not animate
   selectView: function(name) {
     var views = this.getClientControls();
 
@@ -116,9 +116,9 @@ enyo.kind({
   },
 
 
-	//* @protected
-	create: function() {
-		this.inherited(arguments);
+  //* @protected
+  create: function() {
+    this.inherited(arguments);
 
     // TODO: make available via own Kind
     this.$.pane.$.animator.setDuration(250);
@@ -133,7 +133,7 @@ enyo.kind({
   },
 
   initComponents: function() {
-		this.inherited(arguments);
+    this.inherited(arguments);
 
     this.$.menu.createComponents(this.menu, { owner: this });
     this.$.secondarymenu.createComponents(this.secondarymenu, { owner: this });

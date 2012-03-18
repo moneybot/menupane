@@ -1,9 +1,9 @@
 /* App.js */
 
 enyo.kind({
-	name: "App",
+  name: "App",
   classes: "enyo-unselectable",
-	components: [
+  components: [
     // height necessary.
     { name: "menupane", kind: "MenuPane",
       style: "height: 600px; width: 360px;",
