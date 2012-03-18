@@ -27,12 +27,8 @@ enyo.kind({
         set 'view' property to the 'name' of the view to display
     */
     secondarymenu: "",
-    /** a list of controls to swap between.
-        set 'name' to match the 'view' of a menu entry.
-    */
-    views: "",
 
-    //  peek: 52,  - make peek configurable
+    //  peek: 52,  - TODO: make a configurable peek
     //* the currently selected view.  Use setView() and getView() to change w/o menu actions
     view: ""
   },
@@ -210,7 +206,6 @@ enyo.kind({
       }
 
     }
-
   }
 
 });
